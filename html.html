@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shegaw Afele | Information Systems Student & Aspiring Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --ethiopia-green: #078930;
+            --ethiopia-yellow: #fcdd09;
+            --ethiopia-red: #da121a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        .btn-dark {
+            background: var(--secondary-color);
+        }
+        
+        .btn-ethiopia {
+            background: var(--ethiopia-green);
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+        }
+        
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--ethiopia-green);
+            margin-bottom: 10px;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icons {
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background: #fff;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .university-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .university-badge img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .skill-item {
+            background: var(--light-color);
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Projects Section */
+        #projects {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(231, 76, 60, 0.05) 100%);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .project-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .tech-item {
+            background: var(--light-color);
+            padding: 5px 10px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+        
+        .project-links a {
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Skills Section */
+        #skills {
+            padding: 100px 0;
+            background: #fff;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(231, 76, 60, 0.05) 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-category i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .skill-category ul li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        /* Learning Path Section */
+        #learning {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(7, 137, 48, 0.05) 0%, rgba(252, 221, 9, 0.05) 100%);
+        }
+        
+        .learning-path {
+            margin-top: 50px;
+        }
+        
+        .path-item {
+            display: flex;
+            margin-bottom: 30px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .path-icon {
+            font-size: 2rem;
+            color: var(--ethiopia-green);
+            margin-right: 20px;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .path-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .path-content p {
+            color: #666;
+        }
+        
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .ethiopia-flag {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .ethiopia-flag span {
+            display: inline-block;
+            width: 20px;
+            height: 12px;
+            margin: 0 2px;
+        }
+        
+        .ethiopia-green {
+            background-color: var(--ethiopia-green);
+        }
+        
+        .ethiopia-yellow {
+            background-color: var(--ethiopia-yellow);
+        }
+        
+        .ethiopia-red {
+            background-color: var(--ethiopia-red);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-top: 30px;
+            }
+            
+            .hero-image img {
+                max-width: 70%;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .path-item {
+                flex-direction: column;
+            }
+            
+            .path-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Shegaw<span>Afele</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#learning">Learning Path</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span>Shegaw Afele</span></h1>
+                    <div class="subtitle">Information Systems Student & Aspiring Developer</div>
+                    <p>An enthusiastic tech learner from Ethiopia currently pursuing my degree at Debre Berhan University. Passionate about building solutions through code and continuously expanding my technical skills.</p>
+                    <a href="#projects" class="btn">View My Projects</a>
+                    <a href="#contact" class="btn btn-dark">Contact Me</a>
+                    <a href="#learning" class="btn btn-ethiopia">My Learning Path</a>
+                    
+                    <div class="social-icons">
+                        <a href="https://github.com/shegaw-21" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkdin.com/in/shegaw-afele-436060339" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="ሂdና©" target="_blank"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="image.jpg" alt="Shegaw Afele">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="image2.jpg" alt="About Shegaw Afele">
+                </div>
+                <div class="about-text">
+                    <div class="university-badge">
+                        <img src="https://th.bing.com/th/id/OIP.oLIyv5gl90_GlMkMBCbZ-QHaFj?w=240&h=180&c=7&r=0&o=7&cb=iwp1&pid=1.7&rm=3" alt="DBU Logo">
+                        <span>Debre Berhan University, Ethiopia</span>
+                    </div>
+                    <h3>Information Systems Student & Tech Enthusiast</h3>
+                    <p>I'm currently pursuing my Bachelor's degree in Information Systems at Debre Berhan University, where I'm building a strong foundation in both technical and business aspects of information technology.</p>
+                    <p>My journey in programming began with fundamental languages and has grown into a passion for creating practical solutions. I'm particularly interested in how technology can be leveraged to solve real-world problems in the Ethiopian context.</p>
+                    
+                    <div class="skills-list">
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C#</span>
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">CSS3</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://img.firehouse.com/files/base/cygnus/fhc/image/2017/04/RespondSystem.58ee80545d251.png?auto=format&w=1000&h=562&fit=clip&dpr=2" alt="Emergency Response System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Emergency Response System</h3>
+                        <p>A system designed to improve emergency response times by connecting users with nearby services using location-based technology.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">C#</span>
+                            <span class="tech-item">Android</span>
+                            <span class="tech-item">Firebase</span>
+                            <span class="tech-item">Google Maps API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/shegaw-21/Emergency-Response-System-" class="btn" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.wondershare.com/edrawmax/articles2024/er-diagram-uni-mgmt-system/er-diagram-university-system-07.jpg" alt="University Management System">
+                    </div>
+                    <div class="project-info">
+                        <h3>University Management System</h3>
+                        <p>A desktop application for managing student records, courses, and academic processes at educational institutions.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">Java</span>
+                            <span class="tech-item">.NET</span>
+                            <span class="tech-item">SQL Server</span>
+                            <span class="tech-item">WinForms</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="" class="btn">View Demo</a>
+                            <a href="#" class="btn btn-dark">Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://www.salestrendz.com/wp-content/uploads/2019/09/Inventory-Management-System-1024x576.png" alt="Inventory Management">
+                    </div>
+                    <div class="project-info">
+                        <h3>Inventory Management System</h3>
+                        <p>A console-based application for small businesses to track inventory, sales, and generate basic reports.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">C#</span>
+                            <span class="tech-item">C++</span>
+                            <span class="tech-item">File I/O</span>
+                            <span class="tech-item">Data Structures</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.bing.com/aclick?ld=e8Zj8fqEkafi3OAj5QyH9TFjVUCUzc31aRMV8ee6f2vBbBns8HHr_Lm62Kl-3PJ_AWG_aYZoxpjb5Ff8yHAWBnfpZ_aWv2cDFnOwcB336ja5ClOeqOvwDFJTMMVcOPs9ijEDq1UH4Yym104iecWFPUy2mcgF_qvtn86UMy4N_vc5Ji99Oj619XaL2zmyrr4yWNF2-WCQ&u=aHR0cHMlM2ElMmYlMmZ3d3cubWFuYWdlZW5naW5lLmNvbSUyZnByb2R1Y3RzJTJmc2VydmljZS1kZXNrJTJmaXQtYXNzZXQtbWFuYWdlbWVudCUyZml0LWludmVudG9yeS1tYW5hZ2VtZW50Lmh0bWwlM2ZuZXR3b3JrJTNkbyUyNmRldmljZSUzZGMlMjZrZXl3b3JkJTNkaXQlMjUyMGludmVudG9yeSUyNTIwbWFuYWdlbWVudCUyNTIwc29mdHdhcmUlMjZjYW1wYWlnbmlkJTNkNDAxNjI1OTM4JTI2Y3JlYXRpdmUlM2QlMjZtYXRjaHR5cGUlM2RwJTI2YWRwb3NpdGlvbiUzZCUyNnBsYWNlbWVudCUzZCUyNmFkZ3JvdXAlM2QxMzAyOTIxNjEwNzM1MDQ3JTI2dGFyZ2V0aWQlM2Rrd2QtODE0MzI3ODMyNDc5MTMlM2Fsb2MtNTklMjZsb2NhdGlvbiUzZDE0MjI0NCUyNm1zY2xraWQlM2QyMzhiMDE4NTg3MTcxZGQwOWY2NzY5OWRmYzdlNWJjMSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZFNEUC1TZWFyY2gtQWZyaWNhLUwxLVBocmFzZSUyNTJGQk1NJTI2dXRtX3Rlcm0lM2RpdCUyNTIwaW52ZW50b3J5JTI1MjBtYW5hZ2VtZW50JTI1MjBzb2Z0d2FyZSUyNnV0bV9jb250ZW50JTNkSW52ZW50b3J5JTI1MjBNYW5hZ2VtZW50&rlid=238b018587171dd09f67699dfc7e5bc1" class="btn">View Demo</a>
+                            <a href="#" class="btn btn-dark">Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Technical Skills</h2>
+            <div class="skills-container">
+                <!-- Programming Languages -->
+                <div class="skill-category">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>C++ (Intermediate)</li>
+                        <li>Python (Intermediate)</li>
+                        <li>Java (Intermediate)</li>
+                        <li>C# (Basic)</li>
+                        <li>JavaScript (Learning)</li>
+                    </ul>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="skill-category">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>Responsive Design</li>
+                        <li>Bootstrap</li>
+                        <li>Basic PHP</li>
+                        <li>JavaScript (ES6+)</li>
+                    </ul>
+                </div>
+                
+                <!-- Database & Tools -->
+                <div class="skill-category">
+                    <i class="fas fa-database"></i>
+                    <h3>Database & Tools</h3>
+                    <ul>
+                        <li>SQL (MySQL, SQL Server)</li>
+                        <li>Git & GitHub</li>
+                        <li>Visual Studio</li>
+                        <li>Android Studio</li>
+                        <li>NetBeans</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section id="learning">
+        <div class="container">
+            <h2 class="section-title">My Learning Path</h2>
+            <div class="learning-path">
+                <div class="path-item">
+                    <div class="path-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="path-content">
+                        <h3>Completed Skills</h3>
+                        <p>I've built a solid foundation in programming fundamentals through coursework and personal projects, mastering core concepts in C++, Python, Java, and C#. My web development journey began with HTML/CSS, and I've completed several projects applying these technologies.</p>
+                    </div>
+                </div>
+                
+                <div class="path-item">
+                    <div class="path-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="path-content">
+                        <h3>Currently Learning</h3>
+                        <p>Currently deepening my JavaScript knowledge and exploring front-end frameworks. I'm also learning PHP for server-side development and expanding my database skills with more complex SQL queries and database design principles.</p>
+                    </div>
+                </div>
+                
+                <div class="path-item">
+                    <div class="path-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div class="path-content">
+                        <h3>Future Goals</h3>
+                        <p>My roadmap includes mastering JavaScript frameworks (React, Vue), backend development with Node.js and Express, and mobile app development with Flutter. I'm also interested in exploring data science with Python and cloud computing platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always open to discussing potential collaborations, internship opportunities, or just chatting about technology and software development. Feel free to reach out through any of these channels.</p>
+                    
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Debre Berhan, Ethiopia</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>shegaw.afele@dbu.edu.et</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <span>+251 9XX XXX XXX</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-university"></i>
+                            <span>Information Systems, DBU</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/shegaw-21" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2023 Shegaw Afele. All rights reserved.</p>
+            <p>Proudly Ethiopian <span class="ethiopia-flag">
+                <span class="ethiopia-green"></span>
+                <span class="ethiopia-yellow"></span>
+                <span class="ethiopia-red"></span>
+            </span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
